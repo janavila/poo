@@ -3,6 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Random;
 
 
 public class Baralho {
@@ -11,8 +12,8 @@ public class Baralho {
     private int nCartas;
     
     public Baralho(){
-        this.cards = new Carta[32]; // Cria as 32 cartas
-        this.nCartas = 32; // Diz o tamanho
+        this.cards = new Carta[9]; // Cria as 32 cartas
+        this.nCartas = 9; // Diz o tamanho
     }
     
     
@@ -28,18 +29,19 @@ public class Baralho {
         BufferedReader buffer = new BufferedReader(new FileReader("cartas"));
         String linha = "";
         try{
-            while(linha != null){ // para cada linha.
-            linha = buffer.readLine(); // pega a linha.
-            String[] aux = linha.split(";");
-            nome = aux[0];
-            indice = aux[1];
-            tipo = aux[2];
-            decomposicao = Integer.parseInt(aux[3]); // Transforma string para inteiro.
-            ataque = Integer.parseInt(aux[4]); // Transforma string para inteiro.
-            reciclavel = Boolean.getBoolean(aux[5]); // Transforma string para boolean.
-            //System.out.println(nome + indice + tipo + decomposicao + ataque + reciclavel + aux.length);
-            cards[addCard] = new Carta(nome,indice,tipo,decomposicao,reciclavel,ataque);
-            addCard++;
+            while(linha != null && addCard < 32){ // para cada linha.
+                linha = buffer.readLine(); // pega a linha.
+                String[] aux = linha.split(";");
+                nome = aux[0];
+                indice = aux[1];
+                tipo = aux[2];
+                decomposicao = Integer.parseInt(aux[3]); // Transforma string para inteiro.
+                ataque = Integer.parseInt(aux[5]); // Transforma string para inteiro.
+                reciclavel = Boolean.getBoolean(aux[4]); // Transforma string para boolean.
+                //System.out.println(Arrays.toString(aux) + aux.length);
+                cards[addCard] = new Carta(nome,indice,tipo,decomposicao,reciclavel,ataque);
+                //System.out.println(cards[0]);
+                addCard++;
             }
         }
         catch(NullPointerException e){ // Quando chega no final do arquivo.
@@ -56,8 +58,36 @@ public class Baralho {
     
     
     public void imprimeCards(){
-        //for(Carta a: cards){
-            System.out.println(Arrays.toString(cards));
+        for(Carta v: cards){
+            System.out.println(v);
         }
+    }
+    
+    public void embaralhaCards(){
+        Random rand = new Random(); // cria numeros aleatórios.
+        //rand.nextInt((max - min) + 1) + min;
+        int indiceUm,indiceDois; // cria numeros aleatórios.
+        int embaralha = rand.nextInt(200) + 100 ;
+        Carta aux;
+        
+        System.out.println(embaralha);
+        for(int i=0; i < embaralha; i++){
+            
+            indiceUm = rand.nextInt(9);
+            indiceDois = rand.nextInt(9);
+            
+            aux = cards[indiceUm];
+            cards[indiceUm] = cards[indiceDois];
+            cards[indiceDois] = aux;
+        }
+        System.out.println("-------------------------------");
+        imprimeCards();
+        
+        
+    }
+        public int getCartas(){
+            return nCartas;
+        }
+  
     }
  

@@ -19,4 +19,9 @@ public class Carta {
         this.ataque = a;
     }
     
+    @Override
+    public String toString(){
+        return "\nNome: "+nome+"\nIndice: "+indice+"\nTipo: "+tipo+"\nDecomposição: "+decomposicao+
+                "\nReciclavel: "+reciclavel+"\nAtaque: "+ataque;
+    }
 }
