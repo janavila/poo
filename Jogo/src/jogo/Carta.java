@@ -25,4 +25,29 @@ public class Carta {
         return "\nNome: "+nome+"\nIndice: "+indice+"\nTipo: "+tipo+"\nDecomposição: "+decomposicao+
                 "\nReciclavel: "+reciclavel+"\nAtaque: "+ataque;
     }
+    
+    public String getNome(){
+        return nome;
+    }
+    
+    public String getIndice(){
+        return indice;
+    }
+    
+    public String getTipo(){
+        return tipo;
+    }
+    
+    public int getDecomposicao(){
+        return decomposicao;
+    }
+    
+    public boolean getReciclavel(){
+        return reciclavel;
+    }
+    
+    public int getAtaque(){
+        return ataque;
+    }
+    
 }

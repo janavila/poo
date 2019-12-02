@@ -22,7 +22,7 @@ public class Jogador {
 
         while (true) {
             try {
-                System.out.println(monte.get(0));
+                System.out.println("---------------\n"+monte.get(0)+ "\n---------------");
                 System.out.println("Diga qual atributos você deseja escolher: \n1 - Tipo\n2 - Decomposição\n3 - Reciclável\n4 - Ataque");
                 scan = new Scanner(System.in);
                 atributo = scan.nextInt();
@@ -39,10 +39,26 @@ public class Jogador {
         System.out.println(monte);
     }
     
-    public void adicionaMonte(Carta card){
-        monte.add(card);
+    public void adicionaMonte(Carta cards){
+            monte.add(cards);
+ 
     }
+    public void adicionaMonte(ArrayList<Carta> cards){
+            for(Carta aux: cards){
+                monte.add(aux);
+            }
+        
+    }
+    
 
+    public Carta getCard(){
+        System.out.println("=============================\n"+monte.get(0)); // 0 é a posição do topo.
+        return monte.remove(0);
+    }
+    
+    public int numCartas(){
+        return monte.size();
+    }
 
 }
 

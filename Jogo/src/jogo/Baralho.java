@@ -36,11 +36,10 @@ public class Baralho {
                 indice = aux[1];
                 tipo = aux[2];
                 decomposicao = Integer.parseInt(aux[3]); // Transforma string para inteiro.
+                reciclavel = aux[4].equals("true") ? true: false;// Transforma string para boolean.
                 ataque = Integer.parseInt(aux[5]); // Transforma string para inteiro.
-                reciclavel = Boolean.getBoolean(aux[4]); // Transforma string para boolean.
                 //System.out.println(Arrays.toString(aux) + aux.length);
                 cards[addCard] = new Carta(nome,indice,tipo,decomposicao,reciclavel,ataque);
-                //System.out.println(cards[0]);
                 addCard++;
             }
         }
