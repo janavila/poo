@@ -2,12 +2,12 @@ package jogo;
 
 public class Carta {
     
-    private String nome;
-    private String indice;
-    private String tipo;
-    private int decomposicao;
-    private boolean reciclavel;
-    private int ataque;
+    private final String nome;
+    private final String indice;
+    private final String tipo;
+    private final int decomposicao;
+    private final boolean reciclavel;
+    private final int ataque;
 //  private String mensagem;
     
     public Carta(String n,String i,String t,int d,boolean r,int a){
@@ -18,6 +18,7 @@ public class Carta {
         this.reciclavel= r;
         this.ataque = a;
     }
+    
     
     @Override
     public String toString(){

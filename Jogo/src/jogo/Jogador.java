@@ -7,11 +7,12 @@ import java.util.Scanner;
 
 public class Jogador {
 
-    ArrayList<Carta> monte;
+    private ArrayList<Carta> monte;
     private int nCartas;
-
+            
     public Jogador(int nCartas) {
         this.nCartas = nCartas;
+        this.monte = new ArrayList<>(nCartas);
  
     }
 
@@ -21,6 +22,7 @@ public class Jogador {
 
         while (true) {
             try {
+                System.out.println(monte.get(0));
                 System.out.println("Diga qual atributos você deseja escolher: \n1 - Tipo\n2 - Decomposição\n3 - Reciclável\n4 - Ataque");
                 scan = new Scanner(System.in);
                 atributo = scan.nextInt();
@@ -32,15 +34,17 @@ public class Jogador {
         }
     
     }
-
-        public void adicionaMonte(Carta[] cartas){
-            monte.addAll(Arrays.asList(cartas)); // Adiciona as cartas ao monte.
-            nCartas += cartas.length; // novo número de cartas do jogador.
+    
+    public void showCards(){
+        System.out.println(monte);
     }
-        
-        public int getCartasJogador(){
-            return nCartas;
-        }
+    
+    public void adicionaMonte(Carta card){
+        monte.add(card);
+    }
+
+
 }
+
 
 

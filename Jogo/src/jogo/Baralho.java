@@ -2,6 +2,7 @@ package jogo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,8 +13,8 @@ public class Baralho {
     private int nCartas;
     
     public Baralho(){
-        this.cards = new Carta[9]; // Cria as 32 cartas
-        this.nCartas = 9; // Diz o tamanho
+        this.cards = new Carta[10]; // Cria as 32 cartas
+        this.nCartas = 10; // Diz o tamanho
     }
     
     
@@ -21,7 +22,6 @@ public class Baralho {
         String nome,indice,tipo; // pega os dados
         int decomposicao,ataque; // pega os dados
         boolean reciclavel; // pega os dados
-    //    int nAtributos = 6; // numero de atributos
         int addCard=0; // para adicionar as cartas.
         
         
@@ -56,13 +56,6 @@ public class Baralho {
         
     }
     
-    
-    public void imprimeCards(){
-        for(Carta v: cards){
-            System.out.println(v);
-        }
-    }
-    
     public void embaralhaCards(){
         Random rand = new Random(); // cria numeros aleatórios.
         //rand.nextInt((max - min) + 1) + min;
@@ -70,24 +63,24 @@ public class Baralho {
         int embaralha = rand.nextInt(200) + 100 ;
         Carta aux;
         
-        System.out.println(embaralha);
         for(int i=0; i < embaralha; i++){
             
-            indiceUm = rand.nextInt(9);
-            indiceDois = rand.nextInt(9);
+            indiceUm = rand.nextInt(nCartas);
+            indiceDois = rand.nextInt(nCartas);
             
             aux = cards[indiceUm];
             cards[indiceUm] = cards[indiceDois];
             cards[indiceDois] = aux;
         }
-        System.out.println("-------------------------------");
-        imprimeCards();
-        
-        
+       
     }
         public int getCartas(){
             return nCartas;
         }
-  
-    }
+        
+        public Carta retornaCarta(int pos){
+            return cards[pos];
+        }
+        
+}
  
